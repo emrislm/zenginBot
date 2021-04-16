@@ -180,6 +180,5 @@ function MyPlay(connection, message) {
 
 
 
-client.login("ODMyMTkzNTEwMjM2MzU2NjIw.YHgOmg.9XXXE_O7lcytTyQke6XpSQ0Qims");
-//client.login(process.env.BOTTOKEN);
+client.login(process.env.BOTTOKEN);
 
