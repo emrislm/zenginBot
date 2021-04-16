@@ -45,19 +45,19 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
     if(newUserChannel === general_VCid) { 
         if (newState.member.user.username === "Itseiji") {
-            oldState.guild.channels.cache.get(general_TCid).send("Yavsak (Itseiji) joined voice");
+            oldState.guild.channels.cache.get(botdinges_TCid).send("Yavsak (Itseiji) joined voice");
             voiceChannel_general.join().then(connection => {
                 console.log("BOT Successfully connected.");
                 server.dispatcher = connection.play(ytdl(zengin, {filter: "audioonly"}));
             }).catch(e => { console.error(e); });
         } else if (newState.member.user.username === "Eternal") {
-            oldState.guild.channels.cache.get(general_TCid).send("Salak (Eternal) joined voice");
+            oldState.guild.channels.cache.get(botdinges_TCid).send("Salak (Eternal) joined voice");
             voiceChannel_general.join().then(connection => {
                 console.log("BOT Successfully connected.");
                 server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
             }).catch(e => { console.error(e); });
         } else if (newState.member.user.username === "Tahir") {
-            oldState.guild.channels.cache.get(general_TCid).send("Canimin ici (Tahir) joined voice");
+            oldState.guild.channels.cache.get(botdinges_TCid).send("Canimin ici (Tahir) joined voice");
             voiceChannel_general.join().then(connection => {
                 console.log("BOT Successfully connected.");
                 server.dispatcher = connection.play(ytdl(caniminIci, {filter: "audioonly"}));
