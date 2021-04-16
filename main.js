@@ -40,6 +40,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     const zengin = "https://youtu.be/6MJF0UoVZpw";
     const caniminIci = "https://youtu.be/HJu3TltNRHk";
     const salak = "https://youtu.be/15S_g5aqLjs";
+    const opimmi = "https://youtu.be/wE95R75FNlM";
 
     var server = servers[guildID];
 
@@ -48,19 +49,19 @@ client.on('voiceStateUpdate', (oldState, newState) => {
             //oldState.guild.channels.cache.get(botdinges_TCid).send("Yavsak (Itseiji) joined voice");
             voiceChannel_general.join().then(connection => {
                 console.log("BOT Successfully connected.");
-                server.dispatcher = connection.play(ytdl(zengin, {filter: "audioonly"}));
+                server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
             }).catch(e => { console.error(e); });
         } else if (newState.member.user.username === "Eternal") {
             //oldState.guild.channels.cache.get(botdinges_TCid).send("Salak (Eternal) joined voice");
             voiceChannel_general.join().then(connection => {
                 console.log("BOT Successfully connected.");
-                server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
+                server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
             }).catch(e => { console.error(e); });
         } else if (newState.member.user.username === "Tahir") {
             //oldState.guild.channels.cache.get(botdinges_TCid).send("Canimin ici (Tahir) joined voice");
             voiceChannel_general.join().then(connection => {
                 console.log("BOT Successfully connected.");
-                server.dispatcher = connection.play(ytdl(caniminIci, {filter: "audioonly"}));
+                server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
             }).catch(e => { console.error(e); });
         }
 
@@ -133,6 +134,8 @@ client.on("guildMemberAdd", async member => {
     channel.send(`Selamunaleykum yavsak ${member}.`);
 });
 
+client.login(process.env.BOTTOKEN);
+
 function MyPlay(connection, message) {
     var server = servers[message.guild.id];
     server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
@@ -147,38 +150,4 @@ function MyPlay(connection, message) {
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-client.login(process.env.BOTTOKEN);
 
