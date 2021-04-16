@@ -22,7 +22,7 @@ module.exports = {
             const stream = ytdl(video.url, {filter: 'audioonly'});
             connection.play(stream, {seek:0, volume: 1});
 
-            await message.reply(`:thumbup: Ne dinliyoruz?? ***${video.title}***`);
+            await message.reply(`Ne dinliyoruz?? ***${video.title}***`);
         }
         else {
             message.channel.send("Niks gevonden jng...");
