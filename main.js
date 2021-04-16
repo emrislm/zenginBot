@@ -37,9 +37,9 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     let oldUserChannel = oldState.channelID;
     const voiceChannel_general = client.channels.cache.get(general_VCid);
 
-    const zengin = "https://youtu.be/6MJF0UoVZpw";
-    const caniminIci = "https://youtu.be/HJu3TltNRHk";
-    const salak = "https://youtu.be/15S_g5aqLjs";
+    const zengin =      "https://youtu.be/6MJF0UoVZpw";
+    const caniminIci =  "https://youtu.be/HJu3TltNRHk";
+    const salak =       "https://youtu.be/15S_g5aqLjs";
 
     var server = servers[guildID];
 
