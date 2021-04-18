@@ -109,6 +109,4 @@ client.on("guildMemberAdd", async member => {
     channel.send(`Selamunaleykum yavsak ${member}.`);
 });
 
-// client.login(process.env.BOTTOKEN);
-client.login("ODMyMTkzNTEwMjM2MzU2NjIw.YHgOmg.4jD51aeAyji0AXYVKlBVwf4mMKs");
-
+client.login(process.env.BOTTOKEN);
