@@ -80,47 +80,22 @@ client.on('message', message => {
 
     if(command === 'ping') {
         client.commands.get('ping').execute(message, args);
-    } else if(command === 'esistsamstagabend') {
-        client.commands.get('esistsamstagabend').execute(message, args);
+    } else if(command === 'esistmiamiyacine') {
+        client.commands.get('esistmiamiyacine').execute(message, args);
     } else if(command === 'aloow') {
         client.commands.get('aloow').execute(message, args);
-    } else if(command === 'ac') {
-        if (!args[0]) {
-            message.channel.send('provide een link salak cocuk!');
-            return;
-        } else if(!message.member.voice.channel) {
-            message.channel.send("Salak cocuk NERDESIN? VOICE'A GEL");
-            return;
-        }
-        if(!servers[message.guild.id]) servers[message.guild.id] = {
-            queue: []
-        }
-
-        var server = servers[message.guild.id];
-        server.queue.push(args[0]);
-        if(message.guild.voice === undefined || !message.guild.voice.connection) message.member.voice.channel.join().then((connection) => {
-            MyPlay(connection, message);
-        });
-    } else if(command === 'gec') {
-        var server = servers[message.guild.id];
-        if(server.dispatcher) server.dispatcher.end();
-    } else if(command === 'kapat') {
-        var server = servers[message.guild.id];
-        if(message.guild.voice != undefined) {
-            if(message.guild.voice.connection) {
-                for (var i = server.queue.length -1; i >= 0; i--) {
-                    server.queue.splice(i, 1);
-                }
-                server.dispatcher.end();
-                console.log('kapattin');
-            }
-            if(message.guild.connection) message.guild.voice.connection.disconnect();
-        }
-    } else if(command === 'play') {
-        client.commands.get('play').execute(message, args);
-    } else if(command === 'stop') {
-        client.commands.get('stop').execute(message, args);
-    }
+    } 
+    //else if(command === 'ac') {
+    //     client.commands.get('ac').execute(message, args, servers);
+    // } else if(command === 'gec') {
+    //     client.commands.get('gec').execute(message, args, servers);
+    // } else if(command === 'kapat') {
+    //     client.commands.get('kapat').execute(message, args, servers);
+    // } else if(command === 'play') {
+    //     client.commands.get('play').execute(message, args);
+    // } else if(command === 'stop') {
+    //     client.commands.get('stop').execute(message, args);
+    // }
 });
 
 client.on("guildMemberAdd", async member => {
@@ -134,20 +109,6 @@ client.on("guildMemberAdd", async member => {
     channel.send(`Selamunaleykum yavsak ${member}.`);
 });
 
-client.login(process.env.BOTTOKEN);
-
-function MyPlay(connection, message) {
-    var server = servers[message.guild.id];
-    server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
-    server.queue.shift();
-    server.dispatcher.on("finish", () => {
-        if (server.queue[0]) {
-            MyPlay(connection, message);
-        } 
-        else {
-            connection.disconnect();
-        }
-    });
-}
-
+// client.login(process.env.BOTTOKEN);
+client.login("ODMyMTkzNTEwMjM2MzU2NjIw.YHgOmg.4jD51aeAyji0AXYVKlBVwf4mMKs");
 
