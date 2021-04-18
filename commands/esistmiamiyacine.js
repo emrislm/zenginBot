@@ -1,6 +1,6 @@
 module.exports = {
-    name: 'esistsamstagabend',
-    description: 'esistsamstagabend',
+    name: 'esistmiamiyacine',
+    description: 'esistmiamiyacine',
     execute(message, args) {
         message.channel.send('Fatih benim ya**ami yesin.');
     }
