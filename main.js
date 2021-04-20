@@ -21,12 +21,6 @@ client.once('ready', () => {
 });
 
 client.on('voiceStateUpdate', (oldState, newState) => {
-    // MN EIGEN SERVER DATA
-    //general:          825730180110221364
-    //do-re-mi-fa-sol:  828628847741501491
-    //bot-dinges:       832146225427513406
-    //general voice:    825730180110221365
-    //message.guild.id: 825730179632463874
     const general_TCid = "825730180110221364";
     const doremifdasol_TCid = "828628847741501491";
     const botdinges_TCid = "832146225427513406";
@@ -45,30 +39,20 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     var server = servers[guildID];
 
     if(newUserChannel === general_VCid) { 
-        if (newState.member.user.username === "Itseiji") {
-            //oldState.guild.channels.cache.get(botdinges_TCid).send("Yavsak (Itseiji) joined voice");
-            voiceChannel_general.join().then(connection => {
-                console.log("BOT Successfully connected.");
-                server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
-            }).catch(e => { console.error(e); });
-        } else if (newState.member.user.username === "Eternal") {
-            //oldState.guild.channels.cache.get(botdinges_TCid).send("Salak (Eternal) joined voice");
-            voiceChannel_general.join().then(connection => {
-                console.log("BOT Successfully connected.");
-                server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
-            }).catch(e => { console.error(e); });
-        } else if (newState.member.user.username === "Tahir") {
-            //oldState.guild.channels.cache.get(botdinges_TCid).send("Canimin ici (Tahir) joined voice");
-            voiceChannel_general.join().then(connection => {
-                console.log("BOT Successfully connected.");
-                server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
-            }).catch(e => { console.error(e); });
-        }
+        voiceChannel_general.join().then(connection => {
+            console.log("BOT Successfully connected.");
+            server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
+        }).catch(e => { console.error(e); });
 
         console.log(newState.member.user.username + " joined");
     }
     else {
         console.log(newState.member.user.username + " left");
+
+        voiceChannel_general.join().then(connection => {
+            console.log("BOT Successfully connected.");
+            server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
+        }).catch(e => { console.error(e); });
     }
 });
 
