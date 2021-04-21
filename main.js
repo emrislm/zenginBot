@@ -16,44 +16,41 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+//belangrijk
+const general_TCid = "825730180110221364";
+const doremifdasol_TCid = "828628847741501491";
+const botdinges_TCid = "832146225427513406";
+const general_VCid = "825730180110221365";
+const guildID = "825730179632463874";
+
+const zengin = "https://youtu.be/6MJF0UoVZpw";
+const caniminIci = "https://youtu.be/HJu3TltNRHk";
+const salak = "https://youtu.be/15S_g5aqLjs";
+const opimmi = "https://youtu.be/wE95R75FNlM";
+
 client.once('ready', () => {
     console.log('bot is readyboi');
 });
 
 client.on('voiceStateUpdate', (oldState, newState) => {
-    const general_TCid = "825730180110221364";
-    const doremifdasol_TCid = "828628847741501491";
-    const botdinges_TCid = "832146225427513406";
-    const general_VCid = "825730180110221365";
-    const guildID = "825730179632463874";
-
     let newUserChannel = newState.channelID;
     let oldUserChannel = oldState.channelID;
-    const voiceChannel_general = client.channels.cache.get(general_VCid);
-
-    const zengin = "https://youtu.be/6MJF0UoVZpw";
-    const caniminIci = "https://youtu.be/HJu3TltNRHk";
-    const salak = "https://youtu.be/15S_g5aqLjs";
-    const opimmi = "https://youtu.be/wE95R75FNlM";
+    const voiceChannel = client.channels.cache.get(general_VCid);
 
     var server = servers[guildID];
 
     if(newUserChannel === general_VCid) { 
-        voiceChannel_general.join().then(connection => {
-            console.log("BOT Successfully connected.");
+        voiceChannel.join().then(connection => {
             server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
         }).catch(e => { console.error(e); });
 
         console.log(newState.member.user.username + " joined");
-    }
-    else {
-        console.log(newState.member.user.username + " left");
-
-        voiceChannel_general.join().then(connection => {
-            console.log("BOT Successfully connected.");
-            // server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
+    } else {
+        voiceChannel.join().then(connection => {
             server.dispatcher = connection.play("./audio/mardatoniTefankardo.mp3");
         }).catch(e => { console.error(e); });
+        
+        console.log(newState.member.user.username + " left");
     }
 });
 
@@ -69,29 +66,23 @@ client.on('message', message => {
         client.commands.get('esistmiamiyacine').execute(message, args);
     } else if(command === 'aloow') {
         client.commands.get('aloow').execute(message, args);
-    } 
-    //else if(command === 'ac') {
-    //     client.commands.get('ac').execute(message, args, servers);
-    // } else if(command === 'gec') {
-    //     client.commands.get('gec').execute(message, args, servers);
-    // } else if(command === 'kapat') {
-    //     client.commands.get('kapat').execute(message, args, servers);
-    // } else if(command === 'play') {
-    //     client.commands.get('play').execute(message, args);
-    // } else if(command === 'stop') {
-    //     client.commands.get('stop').execute(message, args);
-    // }
+    }
+});
+
+client.on("typingStart", (channel, user) => {
+    channel.send(`${user.username} has started typing`);
+});
+client.on("typingStop", (channel, user) => {
+    channel.send(`${user.username} has stopped typing`);
 });
 
 client.on("guildMemberAdd", async member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "general");
     if(!channel) {
-        console.log("bestaat niet");
         return;
     }
 
-    console.log("bestaat");
-    channel.send(`Selamunaleykum yavsak ${member}.`);
+    channel.send(`Selamunaleykum ${member.user.username} yavsagim.`);
 });
 
 client.login(process.env.BOTTOKEN);
