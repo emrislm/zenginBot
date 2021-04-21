@@ -41,7 +41,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
     if(newUserChannel === general_VCid) { 
         voiceChannel_general.join().then(connection => {
             console.log("BOT Successfully connected.");
-            server.dispatcher = connection.play(ytdl(opimmi, {filter: "audioonly"}));
+            server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
         }).catch(e => { console.error(e); });
 
         console.log(newState.member.user.username + " joined");
@@ -51,7 +51,8 @@ client.on('voiceStateUpdate', (oldState, newState) => {
 
         voiceChannel_general.join().then(connection => {
             console.log("BOT Successfully connected.");
-            server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
+            // server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
+            server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
         }).catch(e => { console.error(e); });
     }
 });
