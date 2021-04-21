@@ -69,13 +69,6 @@ client.on('message', message => {
     }
 });
 
-client.on("typingStart", (channel, user) => {
-    channel.send(`${user.username} has started typing`);
-});
-client.on("typingStop", (channel, user) => {
-    channel.send(`${user.username} has stopped typing`);
-});
-
 client.on("guildMemberAdd", async member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "general");
     if(!channel) {
