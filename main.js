@@ -52,7 +52,7 @@ client.on('voiceStateUpdate', (oldState, newState) => {
         voiceChannel_general.join().then(connection => {
             console.log("BOT Successfully connected.");
             // server.dispatcher = connection.play(ytdl(salak, {filter: "audioonly"}));
-            server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
+            server.dispatcher = connection.play("./audio/mardatoniTefankardo.mp3");
         }).catch(e => { console.error(e); });
     }
 });
