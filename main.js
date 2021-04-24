@@ -32,7 +32,7 @@ client.once('ready', () => {
     console.log('bot is readyboi');
 });
 
-client.on('voiceStateUpdate', (oldState, newState) => {
+client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID;
     let oldUserChannel = oldState.channelID;
     const voiceChannel = client.channels.cache.get(general_VCid);
@@ -44,13 +44,17 @@ client.on('voiceStateUpdate', (oldState, newState) => {
             server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
         }).catch(e => { console.error(e); });
 
-        console.log(newState.member.user.username + " joined");
+        console.log(newState.member.user.username + " joined + zoveel member(s): " + voiceChannel.members.size);
     } else {
         voiceChannel.join().then(connection => {
             server.dispatcher = connection.play("./audio/mardatoniTefankardo.mp3");
         }).catch(e => { console.error(e); });
         
-        console.log(newState.member.user.username + " left");
+        console.log(newState.member.user.username + " left + zoveel member(s): " + voiceChannel.members.size);
+
+        if(voiceChannel.members.size <= 1) {
+            voiceChannel.leave();
+        }
     }
 });
 
@@ -78,4 +82,5 @@ client.on("guildMemberAdd", async member => {
     channel.send(`Selamunaleykum ${member.user.username} yavsagim.`);
 });
 
-client.login(process.env.BOTTOKEN);
+client.login("ODMyMTkzNTEwMjM2MzU2NjIw.YHgOmg.9GKwDNnIPIHGNuQbNpDf6davx9s");
+// client.login(process.env.BOTTOKEN);
