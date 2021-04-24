@@ -39,6 +39,10 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 
     var server = servers[guildID];
 
+    if(voiceChannel.members.size <= 1) {
+        voiceChannel.leave();
+    }
+
     if(newUserChannel === general_VCid) { 
         voiceChannel.join().then(connection => {
             server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
