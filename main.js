@@ -39,7 +39,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 
     var server = servers[guildID];
 
-    if(voiceChannel.members.size <= 1) {
+    if(voiceChannel.members.size === 1) {
         voiceChannel.leave();
     }
 
