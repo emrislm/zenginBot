@@ -55,10 +55,6 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         }).catch(e => { console.error(e); });
         
         console.log(newState.member.user.username + " left + zoveel member(s): " + voiceChannel.members.size);
-
-        if(voiceChannel.members.size <= 1) {
-            voiceChannel.leave();
-        }
     }
 });
 
