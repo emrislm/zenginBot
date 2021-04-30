@@ -39,19 +39,19 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 
     var server = servers[guildID];
 
-    if(newUserChannel === general_VCid) { 
-        voiceChannel.join().then(connection => {
-            server.dispatcher = connection.play("./audio/selamuneleykum.mp3");
-        }).catch(e => { console.error(e); });
+    // if(newUserChannel === general_VCid) { 
+    //     voiceChannel.join().then(connection => {
+    //         server.dispatcher = connection.play("./audio/senkahinmisin.mp3");
+    //     }).catch(e => { console.error(e); });
 
-        console.log(newState.member.user.username + " joined + zoveel member(s): " + voiceChannel.members.size);
-    } else {
-        voiceChannel.join().then(connection => {
-            server.dispatcher = connection.play("./audio/mardatoniTefankardo.mp3");
-        }).catch(e => { console.error(e); });
+    //     console.log(newState.member.user.username + " joined + zoveel member(s): " + voiceChannel.members.size);
+    // } else {
+    //     voiceChannel.join().then(connection => {
+    //         server.dispatcher = connection.play("./audio/mardatoniTefankardo.mp3");
+    //     }).catch(e => { console.error(e); });
         
-        console.log(newState.member.user.username + " left + zoveel member(s): " + voiceChannel.members.size);
-    }
+    //     console.log(newState.member.user.username + " left + zoveel member(s): " + voiceChannel.members.size);
+    // }
 });
 
 client.on('message', message => {
@@ -66,7 +66,9 @@ client.on('message', message => {
         client.commands.get('esistmiamiyacine').execute(message, args);
     } else if(command === 'aloow') {
         client.commands.get('aloow').execute(message, args);
-    }
+    } else if(command === 'embed') {
+        client.commands.get('embed').execute(message, args, Discord);
+    } 
 });
 
 client.on("guildMemberAdd", async member => {
@@ -78,4 +80,5 @@ client.on("guildMemberAdd", async member => {
     channel.send(`Selamunaleykum ${member.user.username} yavsagim.`);
 });
 
-client.login(process.env.BOTTOKEN);
+client.login("ODMyMTkzNTEwMjM2MzU2NjIw.YHgOmg.lHcM9QBagpcXVMDWaSO20VLyI7o");
+// client.login(process.env.BOTTOKEN);
